@@ -79,7 +79,7 @@ const jobSchema = new Schema<IJob>(
   },
   {
     timestamps: true,
-    toJSON: { virtuals: true, transform: (_d, ret) => (delete ret.__v, ret) },
+    toJSON: { virtuals: true, transform: (_d, ret: any) => (delete ret.__v, ret) },
   },
 );
 

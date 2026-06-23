@@ -2,6 +2,7 @@ import {
   Document,
   FilterQuery,
   Model,
+  PipelineStage,
   PopulateOptions,
   ProjectionType,
   QueryOptions,
@@ -73,6 +74,11 @@ export abstract class BaseRepository<T extends Document> {
 
   async exists(filter: FilterQuery<T>): Promise<boolean> {
     return (await this.model.exists(filter)) !== null;
+  }
+
+  /** Run an arbitrary aggregation pipeline. */
+  async aggregate<R = Record<string, unknown>>(pipeline: PipelineStage[]): Promise<R[]> {
+    return this.model.aggregate<R>(pipeline).exec();
   }
 
   /** Generic offset pagination helper shared by all repositories. */
