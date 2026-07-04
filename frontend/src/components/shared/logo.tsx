@@ -6,13 +6,16 @@ export function Logo({
   className,
   href = "/",
   showWordmark = true,
+  asLink = true,
 }: {
   className?: string;
   href?: string;
   showWordmark?: boolean;
+  /** When false, renders a plain <span> instead of a <Link> — use inside another link. */
+  asLink?: boolean;
 }) {
-  return (
-    <Link href={href} className={cn("flex items-center gap-2.5 group", className)}>
+  const content = (
+    <>
       <span className="relative grid size-9 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow transition-transform group-hover:scale-105">
         <svg viewBox="0 0 24 24" className="size-5" fill="none" aria-hidden>
           <path
@@ -27,6 +30,18 @@ export function Logo({
           {siteConfig.name}
         </span>
       )}
+    </>
+  );
+
+  const classes = cn("flex items-center gap-2.5 group", className);
+
+  if (!asLink) {
+    return <span className={classes}>{content}</span>;
+  }
+
+  return (
+    <Link href={href} className={classes}>
+      {content}
     </Link>
   );
 }

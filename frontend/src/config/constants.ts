@@ -1,6 +1,7 @@
 import type {
   ApplicationStatus,
   ExperienceLevel,
+  JobStatus,
   JobType,
   WorkMode,
 } from "@/types";
@@ -53,6 +54,21 @@ export const APPLICATION_STATUS_STYLES: Record<ApplicationStatus, string> = {
   rejected: "bg-destructive/10 text-destructive border-destructive/20",
   withdrawn: "bg-muted text-muted-foreground line-through",
   hired: "bg-success text-success-foreground",
+};
+
+export const JOB_STATUS_LABELS: Record<JobStatus, string> = {
+  draft: "Draft",
+  open: "Open",
+  closed: "Closed",
+  archived: "Archived",
+};
+
+/** Token-driven badge styles per job status. */
+export const JOB_STATUS_STYLES: Record<JobStatus, string> = {
+  draft: "bg-muted text-muted-foreground border-border",
+  open: "bg-success/10 text-success border-success/20",
+  closed: "bg-destructive/10 text-destructive border-destructive/20",
+  archived: "bg-muted text-muted-foreground border-border line-through",
 };
 
 /** Statuses an employer can move an application to (pipeline). */

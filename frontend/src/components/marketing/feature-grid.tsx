@@ -8,75 +8,71 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const features = [
   {
     icon: FileSearch,
     title: "AI resume parsing",
     description:
-      "Upload a PDF or DOCX and we instantly extract skills, experience, and education into a structured profile.",
+      "Upload a PDF, DOCX, or TXT and we instantly extract skills, experience, and education into a structured, searchable profile.",
   },
   {
     icon: Target,
     title: "Smart match scoring",
     description:
-      "Every application gets a 0–100 match score so candidates and employers see fit at a glance.",
+      "Every application gets a 0–100 match score with matched and missing skills, so fit is obvious at a glance.",
   },
   {
     icon: Gauge,
     title: "Real-time analytics",
     description:
-      "Dashboards track applications, pipeline stages, and performance — for both seekers and employers.",
+      "Dashboards track applications, pipeline stages, views, and average match — for both seekers and employers.",
   },
   {
     icon: Users,
     title: "Applicant pipeline",
     description:
-      "Move candidates through reviewing, shortlist, interview, and offer with a clean status pipeline.",
+      "Move candidates through reviewing, shortlist, interview, offer, and hired with a clean, one-click status pipeline.",
   },
   {
     icon: Sparkles,
     title: "Powered by free LLMs",
     description:
-      "Provider-agnostic AI (Gemini, Groq, OpenRouter) with a built-in fallback that always works.",
+      "Provider-agnostic AI (Gemini, Groq, OpenRouter) with a deterministic fallback parser that always works — no key required.",
   },
   {
     icon: ShieldCheck,
     title: "Secure by design",
     description:
-      "JWT auth with refresh rotation, role-based access, and validated inputs across the stack.",
+      "JWT auth with refresh-token rotation, role-based access control, and validated inputs across the entire stack.",
   },
 ];
 
 export function FeatureGrid() {
   return (
-    <section className="bg-background py-16 sm:py-20">
+    <section className="relative bg-background py-20 sm:py-24">
       <Container>
         <SectionHeading
           align="center"
           eyebrow="Everything you need"
           title="A platform built for modern hiring"
-          description="From resume parsing to ranked shortlists, every screen is built to help job seekers and teams make faster decisions."
+          description="From resume parsing to ranked shortlists, every screen is designed to help job seekers and teams make faster, better decisions."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <Card
+            <div
               key={f.title}
-              className="transition-colors hover:border-brand/30"
+              className="group relative overflow-hidden rounded-2xl border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevated"
             >
-              <CardHeader>
-                <div className="mb-2 grid size-10 place-items-center rounded-md bg-muted text-brand">
-                  <f.icon className="size-5" />
-                </div>
-                <CardTitle>{f.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  {f.description}
-                </p>
-              </CardContent>
-            </Card>
+              <div className="pointer-events-none absolute -right-10 -top-10 size-28 rounded-full bg-brand/5 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
+              <div className="mb-4 grid size-12 place-items-center rounded-xl bg-brand/10 text-brand transition-transform group-hover:scale-110">
+                <f.icon className="size-6" />
+              </div>
+              <h3 className="text-base font-semibold">{f.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {f.description}
+              </p>
+            </div>
           ))}
         </div>
       </Container>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Quote } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -40,9 +39,7 @@ export default function AuthLayout({
       {/* Form panel */}
       <div className="relative flex flex-col">
         <div className="flex items-center justify-between p-6">
-          <Link href="/" className="lg:invisible">
-            <Logo />
-          </Link>
+          <Logo className="lg:invisible" />
           <ThemeToggle />
         </div>
         <div className="flex flex-1 items-center justify-center px-6 pb-16">

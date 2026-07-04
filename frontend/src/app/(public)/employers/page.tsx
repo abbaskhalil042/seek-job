@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button-link";
+import { CtaSection } from "@/components/marketing/cta-section";
 
 export const metadata: Metadata = { title: "For Employers" };
 
@@ -103,24 +104,24 @@ export default function EmployersPage() {
           title="Everything after the job post is easier to scan"
           description="Use structured profiles, pipeline status, and score context to decide what to review next."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {benefits.map((b) => (
-            <Card key={b.title}>
-              <CardHeader>
-                <div className="mb-2 grid size-10 place-items-center rounded-md bg-muted text-brand">
-                  <b.icon className="size-5" />
-                </div>
-                <CardTitle>{b.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  {b.description}
-                </p>
-              </CardContent>
-            </Card>
+            <div
+              key={b.title}
+              className="group rounded-2xl border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevated"
+            >
+              <div className="mb-4 grid size-12 place-items-center rounded-xl bg-brand/10 text-brand transition-transform group-hover:scale-110">
+                <b.icon className="size-6" />
+              </div>
+              <h3 className="text-base font-semibold">{b.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {b.description}
+              </p>
+            </div>
           ))}
         </div>
       </Container>
+      <CtaSection />
     </>
   );
 }
